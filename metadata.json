@@ -1,0 +1,6 @@
+{
+  "name": "SBS Transit & LTA DataMall Live Transit Engine",
+  "description": "Real-time Singapore bus timings, GPS corridor radar telemetry, and urban mobility design engine synced with LTA DataMall standards.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
