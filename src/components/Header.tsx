@@ -7,6 +7,7 @@ interface HeaderProps {
   selectedHub: string;
   setSelectedHub: (hub: string) => void;
   onOpenSearch: () => void;
+  onOpenApiHealth?: () => void;
   favoritesCount: number;
   alertCount: number;
 }
@@ -17,6 +18,7 @@ export const Header: React.FC<HeaderProps> = ({
   selectedHub,
   setSelectedHub,
   onOpenSearch,
+  onOpenApiHealth,
   favoritesCount,
   alertCount,
 }) => {
@@ -48,8 +50,12 @@ export const Header: React.FC<HeaderProps> = ({
             </div>
           </div>
 
-          {/* SGPS Live pulse */}
-          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#00E676]/10 border border-[#00E676]/25 text-[11px] text-[#00E676] font-medium font-mono">
+          {/* SGPS Live pulse / API Health trigger */}
+          <button
+            onClick={onOpenApiHealth}
+            title="Click to check /api/health and LTA DataMall Gateway status"
+            className="flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#00E676]/10 hover:bg-[#00E676]/20 border border-[#00E676]/25 text-[11px] text-[#00E676] font-medium font-mono transition-colors cursor-pointer"
+          >
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00E676] opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-[#00E676]"></span>
@@ -57,7 +63,7 @@ export const Header: React.FC<HeaderProps> = ({
             <span className="hidden md:inline">LTA DataMall Real-Time API Synced</span>
             <span className="md:hidden">SGPS Live</span>
             <span className="text-[10px] text-slate-400 hidden lg:inline">(SGPS Live)</span>
-          </div>
+          </button>
         </div>
 
         {/* Center / Nav Items */}

@@ -9,6 +9,7 @@ import { TransitFooter } from './components/TransitFooter';
 import { RouteDirectoryModal } from './components/RouteDirectoryModal';
 import { TransitAlertsModal } from './components/TransitAlertsModal';
 import { StopSearchModal } from './components/StopSearchModal';
+import { ApiHealthModal } from './components/ApiHealthModal';
 import { BUS_SERVICES, ADJACENT_STOPS, TRANSIT_ALERTS } from './data/transitData';
 import { AdjacentStop } from './types/transit';
 
@@ -25,6 +26,7 @@ export default function App() {
   const [directoryModalOpen, setDirectoryModalOpen] = useState(false);
   const [alertsModalOpen, setAlertsModalOpen] = useState(false);
   const [searchModalOpen, setSearchModalOpen] = useState(false);
+  const [apiHealthModalOpen, setApiHealthModalOpen] = useState(false);
 
   const currentService = BUS_SERVICES[currentServiceNo] || BUS_SERVICES['147'];
 
@@ -65,6 +67,7 @@ export default function App() {
         selectedHub={selectedHub}
         setSelectedHub={setSelectedHub}
         onOpenSearch={() => setSearchModalOpen(true)}
+        onOpenApiHealth={() => setApiHealthModalOpen(true)}
         favoritesCount={bookmarkedServices.length}
         alertCount={TRANSIT_ALERTS.length}
       />
@@ -149,6 +152,12 @@ export default function App() {
           onClose={() => setSearchModalOpen(false)}
           onSelectBus={(no) => setCurrentServiceNo(no)}
           allServices={BUS_SERVICES}
+        />
+      )}
+
+      {apiHealthModalOpen && (
+        <ApiHealthModal
+          onClose={() => setApiHealthModalOpen(false)}
         />
       )}
     </div>
